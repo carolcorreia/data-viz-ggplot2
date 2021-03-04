@@ -24,14 +24,13 @@ renv::init()
 # https://cran.r-project.org/web/packages/renv/vignettes/faq.html
 
 # If you're coming back to the analysis, uncomment the line below to restore renv environment
-# renv::restore()
+renv::restore()
 
 # renv will help you keep using the same package versions for a project.
 # Very useful when you are working on multiple projects that need different package versions.
 
 # Load libraries
 library(tidyverse)
-library(magrittr)
 
 #### 02 Look at the dataset ####
 
@@ -123,10 +122,12 @@ ggplot(data = mpg, mapping = aes(x = displ, y = hwy)) + # Tell ggplot2 which dat
        subtitle = "Cars with big engines use more fuel",
        caption = "Data source: EPA") -> mpg_plot
 
+mpg_plot
+
 #### 08 Save ggplot to a file ####
 
 ggsave("engine_fuel_plot.png", # Name of the file to be created with the plot. You can also replace .png with .pdf
-       plot = mpg_plot, # Variable that points to the plot in the R environment
+       plot = mpg_plot, # Object name that points to the plot in the R environment
        path = NULL, # If NULL, file you'll be save in your working directory. Otherwise, you can tell the function where to save it
        width = 10, # Define the plot's width
        height = 6, # Define the plot's height
